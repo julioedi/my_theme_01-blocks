@@ -1,0 +1,32 @@
+{
+    "name": "blocks-dev",
+    "version": "1.0.0",
+    "description": "A custom sidebar for WordPress blocks",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "webpack --mode production",
+        "dev": "webpack --mode development --watch"
+    },
+    "author": "Your Name",
+    "license": "GPL-2.0-or-later",
+    "dependencies": {
+        "@wordpress/components": "^29.8.0",
+        "@wordpress/core-data": "^7.22.0",
+        "@wordpress/dom-ready": "^4.22.0",
+        "@wordpress/edit-post": "^8.22.0",
+        "@wordpress/editor": "^14.22.0",
+        "@wordpress/element": "^6.22.0",
+        "@wordpress/hooks": "^4.22.0",
+        "@wordpress/plugins": "^7.22.0",
+        "blocks-dev": "file:",
+        "webpack": "^5.99.7",
+        "webpack-cli": "^6.0.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.27.1",
+        "@babel/preset-env": "^7.27.1",
+        "@babel/preset-react": "^7.27.1",
+        "@wordpress/scripts": "^30.15.0",
+        "babel-loader": "^10.0.0"
+    }
+}

@@ -1,0 +1,1 @@
+import { PluginSidebar } from '@wordpress/editor';

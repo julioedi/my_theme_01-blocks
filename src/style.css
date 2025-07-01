@@ -1,0 +1,9 @@
+/* Style the plugin sidebar */
+.wp-block-editor .components-panel__body {
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.wp-block-editor .components-text-control__input {
+    font-size: 14px;
+}
