@@ -27,6 +27,9 @@ The **Custom SEO Aside** block includes the following input fields:
 - **Custom Inline JavaScript**  
   Add custom scripts for inline functionality or enhancements.
 
+- **Package for services**  
+  Add related packages for related services
+
 ## Purpose
 
 This block is specifically built for editorial use on **julioedi.com**, allowing content creators to enrich posts with SEO metadata and social media customization without relying on external plugins.
