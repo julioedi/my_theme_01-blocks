@@ -20,7 +20,7 @@ const theTitle = () => {
 
 const getMeta = () => {
     return window.wp.data.useSelect((select) =>
-        select('core/editor').getEditedPostAttribute('meta')
+        select('core/editor').getEditedPostAttribute('meta') ?? {}
     );
 }
 

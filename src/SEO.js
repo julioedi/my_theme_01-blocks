@@ -1,6 +1,6 @@
 import { PanelBody, TextControl, TextareaControl, SelectControl } from "@wordpress/components";
 import { useEffect, useState } from "@wordpress/element";
-import { getMeta, getEditor, SeoImage } from "./data";
+import { getMeta, getEditor, SeoImage, theTitle } from "./data";
 import { RichText } from '@wordpress/block-editor';
 import { __ } from "./__";
 
@@ -74,6 +74,8 @@ export default function () {
     let first = {
         index: 0
     };
+
+    const title = theTitle();
     twitterImages.forEach((item, index) => {
         if (item && index != first.index) {
             first.index = index;
@@ -93,6 +95,7 @@ export default function () {
                     }}
                 />
                 <TextControl
+                    placeholder={title}
                     label={__("Alternative Title")}
                     value={seo.title || ''}
                     onChange={(value) => updateField('title', value)}

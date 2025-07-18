@@ -7,9 +7,11 @@ import SEO from './SEO';
 import CSS from './CSS';
 import JS from "./JS";
 import { Component } from '@wordpress/element';
-import { post_info,theme_hook } from './prefix';
+import { post_info, theme_hook } from './prefix';
 import HomeSlides from './components/HomeSlides';
 import { registerBlockType } from '@wordpress/blocks';
+import PackageMetaPanel from './metabox/Packages';
+import ServicePackageMetaPanel from './metabox/ServicePackage';
 
 
 
@@ -19,7 +21,7 @@ const id = "theme-post-style";
 
 const is_public = post_info && !post_info?.publicly_queryable && !post_info?.public ? false : true;
 
-
+console.log({is_public,post_info});
 const seoType = {
     name: 'seo',
     title: 'SEO',
@@ -39,56 +41,10 @@ const jsType = {
     className: 'tab-js',
     Component: JS,
 }
-const tabsData = is_public ? [seoType,cssType,jsType] : [cssType,jsType];
+const tabsData = is_public ? [seoType, cssType, jsType] : [cssType, jsType];
 
 
-registerBlockType('easycv/home-slides',HomeSlides);
-// class Content extends Component {
-//     tabHead = null;
-//     state = {
-//         active: "seo",
-//     }
-//     Head = () => {
-//         const { active } = this.state
-//         return (
-//             <div role='tablist' aria-orientation="horizontal" data-select-on-move="false">
-//                 <div className='active_bar' />
-//                 {
-//                     tabsData.map((item, index) => (
-//                         <div
-//                             className={item.name == active ? "item active" : "item"}
-//                             onClick={() => {
-//                                 console.log(item)
-//                             }}
-//                         >
-//                             {__(item.title)}
-//                         </div>
-//                     )
-//                     )
-//                 }
-//             </div>
-//         )
-//     }
-
-//     render() {
-//         const { Head } = this.state;
-
-//         return (
-//             <PluginSidebar
-//                 name={id}
-//                 title={""}
-//                 icon={icon}
-//                 header={<Head />}
-//             >
-//                 <PanelBody>
-//                     <p>Hola</p>
-//                 </PanelBody>
-//             </PluginSidebar>
-//         );
-
-//     }
-// }
-
+registerBlockType('easycv/home-slides', HomeSlides);
 domReady(() => {
 
     const Head = ({ active, setActive }) => {
@@ -133,4 +89,19 @@ domReady(() => {
         render,
         icon,
     });
+
+    if (post_info && post_info.name === "packages") {
+        registerPlugin("theme-package-meta", {
+            render: PackageMetaPanel,
+            icon
+        });
+    }
+    
+    if (post_info && post_info.name === "services") {
+        registerPlugin("theme-services-meta", {
+            render: ServicePackageMetaPanel,
+            icon
+        });
+    }
+
 });
