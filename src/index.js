@@ -12,6 +12,9 @@ import HomeSlides from './components/HomeSlides';
 import { registerBlockType } from '@wordpress/blocks';
 import PackageMetaPanel from './metabox/Packages';
 import ServicePackageMetaPanel from './metabox/ServicePackage';
+import heroBannerProps from './components/HeroBanner';
+import hook from './hook';
+import ThumbVerticalPanel from './components/Vertical Thumbnail';
 
 
 
@@ -21,7 +24,6 @@ const id = "theme-post-style";
 
 const is_public = post_info && !post_info?.publicly_queryable && !post_info?.public ? false : true;
 
-console.log({is_public,post_info});
 const seoType = {
     name: 'seo',
     title: 'SEO',
@@ -44,7 +46,7 @@ const jsType = {
 const tabsData = is_public ? [seoType, cssType, jsType] : [cssType, jsType];
 
 
-registerBlockType('easycv/home-slides', HomeSlides);
+registerBlockType(`${hook}/home-slides`, HomeSlides);
 domReady(() => {
 
     const Head = ({ active, setActive }) => {
@@ -96,12 +98,21 @@ domReady(() => {
             icon
         });
     }
-    
+
     if (post_info && post_info.name === "services") {
         registerPlugin("theme-services-meta", {
             render: ServicePackageMetaPanel,
             icon
         });
     }
+
+    if (post_info && post_info.name === "portfolio") {
+        registerPlugin("theme-portfolio-verticalimage", {
+            render: ThumbVerticalPanel,
+            icon: null,
+        });
+    }
+
+    registerBlockType(`${hook}/hero-banner`, heroBannerProps);
 
 });
